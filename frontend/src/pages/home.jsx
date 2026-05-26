@@ -3,6 +3,7 @@ import Navbar from "../components/navbar";
 import Footer from "../components/Footer";
 import "../css/Home.css";
 import BlogCard from "../components/BlogCard";
+import { Link } from "react-router-dom";
 const Home = () => {
   return (
     <>
@@ -14,7 +15,13 @@ const Home = () => {
           A modern glassmorphism blogging platform with immersive themes.
         </p>
 
-        <button className="hero-action-button">Start Blogging</button>
+        <Link to="/signup">
+
+  <button className='hero-action-button'>
+    Start Blogging
+  </button>
+
+</Link>
       </section>
 
       <section className="featured-section">
