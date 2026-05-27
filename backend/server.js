@@ -3,6 +3,9 @@ const cors = require('cors');
 
 const app = express()
 
+require('dotenv').config()
+const connectDB = require('./config/db')
+
 app.use(cors())
 
 app.get('/api/message',(req,res)=>{
@@ -11,9 +14,19 @@ app.get('/api/message',(req,res)=>{
     })
 })
 
-port = 3000
+const port = 3000
 
-app.listen(port,()=>{
-    console.log(`the server is runned on ${port}`);
-    
-})
+const startServer = async ()=>{
+    try {
+        await connectDB()
+        app.listen(port,()=>{
+            console.log(`The Server is Running on port ${port}`);
+            
+        })
+    } catch (error) {
+        console.log(error);
+        
+    }
+}
+
+startServer()
