@@ -1,5 +1,6 @@
 const User = require('../models/User');
 const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 
 const signupUser = async (req,res)=>{
     try {
@@ -39,6 +40,7 @@ const signupUser = async (req,res)=>{
 
 const loginUser  = async (req,res)=>{
     try {
+        
         //Take Email Pass from user
         const {email,password} = req.body
         //Check if user Exists
@@ -52,16 +54,23 @@ const loginUser  = async (req,res)=>{
         //Comparision of Passwords
         const isMatch = await bcrypt.compare(password,user.password)
 
-        //If Password COrrect Go On , doesnt - > 401 - Unauthorized
+        //If Password COrrect Go On , doesnt - > 401 - Unauthorized - Password Verification
         if (!isMatch) {
             return res.status(401).json({
                 message:"Invalid Password"
             })
             
         }
+        //Create JWT token 
+        const token = jwt.sign({
+            userId:user._id,
+        },process.env.JWT_SECRET,{
+            expiresIn:'7d'
+        })
+
         //Login was Succueded
         return res.status(200).json({
-            message:"Login Succussful"
+            message:"Login Succussful",token
         })
 
     } catch (error) {
@@ -82,8 +91,21 @@ const getAllUsers = async (req,res)=>{
     }
 }
 
+const getProfile = async (req,res)=>{
+    try {
+        const user = await User.findById(req.user.userId).select('-password')
+        return res.status(200).json(user)
+        
+    } catch (error) {
+        res.status(500).json({
+            message:"User Not Found By ID",error:error.message
+        })
+    }
+}
+
 module.exports={
     signupUser,
     loginUser,
     getAllUsers,
+    getProfile,
 }
