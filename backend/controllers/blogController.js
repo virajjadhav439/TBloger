@@ -43,13 +43,77 @@ const getBlogsById = async (req,res)=>{
     return res.status(200).json(blog)
     } catch (error) {
         return res.status(500).json({
-            message:"Blog Not Found"
+            message:"Blog Not Found",error:error.message,
         })
     }
     
 }
 const deleteBlogs = async (req,res)=>{
+    try {
+        const blog = await Blog.findById(req.params.id)
 
+        if (blog.author.toString() !== req.user.userId) {
+            return res.status(403).json({
+                message:"Not Authorized"
+            })
+        }
+        if (!blog) {
+            return res.status(404).json({
+                message:"Blog Not Found",
+            })
+        }
+
+        await Blog.findByIdAndDelete(req.params.id)
+        return res.status(200).json({
+            message:"Blog Was Deleted Succussfully",
+        })
+    } catch (error) {
+        return res.status(500).json({
+            message:"Blog Deletion Failed",error:error.message,
+        })
+    }
+}
+
+const updateBlog = async (req,res)=>{
+    try {
+
+        const { title, content } = req.body
+
+        const blog = await Blog.findById(req.params.id)
+
+        if(blog.author.toString() !== req.user.userId){
+            return res.status(403).json({
+                message:"Not Authorized"
+            })
+        }
+
+        if (!blog) {
+            return res.status(404).json({
+                message:"Blog Not Found"
+            })
+        }
+
+        const updatedBlog = await Blog.findByIdAndUpdate(
+            req.params.id,
+            { title,
+            content 
+        },
+            { returnDocument:'after' }
+        )
+
+        return res.status(200).json({
+            message:"Blog Updated Successfully",
+            blog: updatedBlog
+        })
+
+    } catch (error) {
+
+        return res.status(500).json({
+            message:"Blog Updation Failed",
+            error:error.message
+        })
+
+    }
 }
 
 module.exports  = {
@@ -57,4 +121,5 @@ module.exports  = {
     getBlogs,
     getBlogsById,
     deleteBlogs,
+    updateBlog,
 }
