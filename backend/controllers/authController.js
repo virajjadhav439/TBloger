@@ -4,9 +4,10 @@ const jwt = require('jsonwebtoken');
 
 const signupUser = async (req,res)=>{
     try {
+        //Fetch Details from Request
         const {name,email,password} = req.body
 
-        //existing user 
+        //Check existing user by email
         const existingUser = await User.findOne({email})
 
         if (existingUser) {
@@ -14,14 +15,14 @@ const signupUser = async (req,res)=>{
                 message:"user Already Exists"
             })
         }
-
+        //Get Hashed Password via bcrypt
         const hashedPassword = await bcrypt.hash(password,10)
 
-        //New User
+        //Create New User
         const user = await User.create({
             name,email,password:hashedPassword
         })
-
+        //Return Confirmation Msg
         return res.status(201).json({
             message:"User Created Succufuly",user:{
                 _id:user.id,
@@ -31,7 +32,7 @@ const signupUser = async (req,res)=>{
         })
         
     } catch (error) {
-
+        //Error handling
         return res.status(500).json({
             message:"User Creation Failed",error:error.message
         })
