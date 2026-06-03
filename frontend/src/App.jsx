@@ -6,15 +6,10 @@ import Home from './pages/Home'
 import Login from './pages/Login'
 import Signup from './pages/Signup'
 import CreatePost from './pages/CreatePost'
-function App() {
-    useEffect(()=>{
-      fetch('http://localhost:3000/api/message')
-      .then(res=>res.json())
-      .then(data=>{
-        console.log(data);
-      })
-    },[])
+import BlogCard from './components/BlogCard'
+import BlogPage from './pages/blogPage'
 
+function App() {
   return (
     <>
       <BrowserRouter>
@@ -23,6 +18,7 @@ function App() {
         <Route path='/login' element ={<Login/>} />
         <Route path='/signup' element={<Signup/>} />
         <Route path='/create' element={<CreatePost/>} />
+        <Route path='/blogs' element={<BlogPage/>}/>
       </Routes>
       </BrowserRouter>
     </> 

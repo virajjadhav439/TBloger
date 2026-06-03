@@ -30,8 +30,8 @@
         //Login Successful confirmation message
         alert('Account Login Successfully')
         console.log(localStorage.getItem("token"));
-
-        
+          
+        navigate('/blogs')
       } catch (error) {
         alert(error.response?.data?.message || 'Login Failed')
       }
