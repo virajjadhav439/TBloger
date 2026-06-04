@@ -28,7 +28,7 @@ const createBlog = async (req,res)=>{
 const getBlogs = async (req,res)=>{
     try {
         //Fetch The blogs and remove content
-        const blogs = await Blog.find().select('-content')
+        const blogs = await Blog.find().select('-content').populate('author','name')
         return res.status(200).json(blogs)
     } catch (error) {
         return res.status(500).json({

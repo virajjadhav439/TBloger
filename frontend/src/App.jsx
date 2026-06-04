@@ -8,7 +8,7 @@ import Signup from './pages/Signup'
 import CreatePost from './pages/CreatePost'
 import BlogCard from './components/BlogCard'
 import BlogPage from './pages/blogPage'
-
+import SingleBlog from './pages/SingleBlog'
 function App() {
   return (
     <>
@@ -19,6 +19,7 @@ function App() {
         <Route path='/signup' element={<Signup/>} />
         <Route path='/create' element={<CreatePost/>} />
         <Route path='/blogs' element={<BlogPage/>}/>
+        <Route path='/blogs/:id' element={<SingleBlog/>}/>
       </Routes>
       </BrowserRouter>
     </> 

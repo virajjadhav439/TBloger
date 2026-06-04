@@ -1,6 +1,6 @@
 import '../css/BlogCard.css'
 import AiImage from './ai.png'
-function BlogCard() {
+function BlogCard({blog}) {
   return (
 
     <div className="blog-card">
@@ -14,18 +14,20 @@ function BlogCard() {
       </span>
 
       <h2 className="blog-title">
-        Future of AI
+        {blog.title}
       </h2>
 
       <p className="blog-description">
-        Exploring how artificial intelligence is transforming modern applications and development.
+        {blog.content}
       </p>
 
       <div className="blog-footer">
 
         <div>
-          <h4>Viraj Jadhav</h4>
-          <p>May 25, 2026</p>
+          <h4>
+            {blog.author?.name || blog.author}
+          </h4>
+          <p>May 25, 2026</p> 
         </div>
 
         <button className="read-more-btn">
