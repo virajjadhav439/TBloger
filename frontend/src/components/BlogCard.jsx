@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import '../css/BlogCard.css'
 import AiImage from './ai.png'
 function BlogCard({blog}) {
@@ -17,10 +18,6 @@ function BlogCard({blog}) {
         {blog.title}
       </h2>
 
-      <p className="blog-description">
-        {blog.content}
-      </p>
-
       <div className="blog-footer">
 
         <div>
@@ -30,9 +27,11 @@ function BlogCard({blog}) {
           <p>May 25, 2026</p> 
         </div>
 
+          <Link to={`/blogs/${blog._id}`}>
         <button className="read-more-btn">
-          Read More
+          Read More...
         </button>
+          </Link>
 
       </div>
 

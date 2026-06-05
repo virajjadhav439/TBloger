@@ -5,7 +5,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Home from './pages/Home'
 import Login from './pages/Login'
 import Signup from './pages/Signup'
-import CreatePost from './pages/CreatePost'
+import CreateBlog from './pages/CreateBlog'
 import BlogCard from './components/BlogCard'
 import BlogPage from './pages/blogPage'
 import SingleBlog from './pages/SingleBlog'
@@ -17,7 +17,7 @@ function App() {
         <Route path='/' element={<Home/>} />
         <Route path='/login' element ={<Login/>} />
         <Route path='/signup' element={<Signup/>} />
-        <Route path='/create' element={<CreatePost/>} />
+        <Route path='/create' element={<CreateBlog/>} />
         <Route path='/blogs' element={<BlogPage/>}/>
         <Route path='/blogs/:id' element={<SingleBlog/>}/>
       </Routes>
