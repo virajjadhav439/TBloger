@@ -9,6 +9,7 @@ import CreateBlog from './pages/CreateBlog'
 import BlogCard from './components/BlogCard'
 import BlogPage from './pages/blogPage'
 import SingleBlog from './pages/SingleBlog'
+import UpdateBlog from './pages/UpdateBlog'
 function App() {
   return (
     <>
@@ -20,6 +21,7 @@ function App() {
         <Route path='/create' element={<CreateBlog/>} />
         <Route path='/blogs' element={<BlogPage/>}/>
         <Route path='/blogs/:id' element={<SingleBlog/>}/>
+        <Route path='/update/:id' element={<UpdateBlog/>} />
       </Routes>
       </BrowserRouter>
     </> 
