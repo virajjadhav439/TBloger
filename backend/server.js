@@ -14,13 +14,6 @@ app.use(cors());
 app.use(express.json());
 
 app.use("/api/auth", authRoutes);
-
-app.get("/api/message", (req, res) => {
-  res.json({
-    message: "Hello From Backend",
-  });
-});
-
 app.use("/api/blogs", blogRoutes);
 
 const port = 3000;

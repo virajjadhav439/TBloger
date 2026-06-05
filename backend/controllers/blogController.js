@@ -32,10 +32,23 @@ const getBlogs = async (req,res)=>{
         return res.status(200).json(blogs)
     } catch (error) {
         return res.status(500).json({
-            message:"Fetching All Blog  Failed",error:error.message
+            message:"Fetching All Blog Failed",error:error.message
         })
     }
 }
+const getMyBlogs = async (req,res)=>{
+    try {
+        //Fetch the Blogs of the user and remove content
+        const myBlogs = await Blog.find({author:req.user.userId}).select('-content').populate('author','name')
+        //Send the Blogs
+        return res.status(200).json(myBlogs)
+    } catch (error) {
+        return res.status(500).json({
+            message:'Fetching My Blogs Failed',error:error.message
+        })
+    }
+}
+
 const getBlogsById = async (req,res)=>{
     try {
         //Fetch the Blog By Id
@@ -119,6 +132,7 @@ const updateBlog = async (req,res)=>{
 module.exports  = {
     createBlog,
     getBlogs,
+    getMyBlogs,
     getBlogsById,
     deleteBlogs,
     updateBlog,
