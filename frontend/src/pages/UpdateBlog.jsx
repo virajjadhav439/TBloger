@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import API from "../api/api";
 import { useParams, useNavigate } from "react-router-dom";
 import '../css/UpdateBlog.css'
+import Navbar from "../components/Navbar";
 const UpdateBlog = () => {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -10,6 +11,7 @@ const UpdateBlog = () => {
     title: "",
     category: "",
     content: "",
+    image:"",
   });
 
   useEffect(() => {
@@ -21,6 +23,7 @@ const UpdateBlog = () => {
           title: response.data.title || "",
           category: response.data.category || "",
           content: response.data.content || "",
+          image:response.data.image||"",
         });
       } catch (error) {
         console.log(error);
@@ -49,6 +52,7 @@ const UpdateBlog = () => {
           title: formData.title,
           category: formData.category,
           content: formData.content,
+          image:formData.image,
         },
         {
           headers: {
@@ -65,6 +69,8 @@ const UpdateBlog = () => {
   };
 
   return (
+  <>
+    <Navbar/>
     <div className="update-blog-page">
       <div className="update-blog-container">
         <h1 className="update-blog-heading">Update Your Blog</h1>
@@ -80,7 +86,7 @@ const UpdateBlog = () => {
             name="title"
             value={formData.title}
             onChange={handleChange}
-          />
+            />
 
           <input
             type="text"
@@ -88,7 +94,7 @@ const UpdateBlog = () => {
             name="category"
             value={formData.category}
             onChange={handleChange}
-          />
+            />
 
           <textarea
             placeholder="Write your blog content here..."
@@ -96,14 +102,22 @@ const UpdateBlog = () => {
             name="content"
             value={formData.content}
             onChange={handleChange}
-          />
-
+            />
+            
+            <input
+            type="text"
+            placeholder="Image URL"
+            name="image"
+            value={formData.image}
+            onChange={handleChange}
+            />
           <button className="update-blog-button">
             Update Blog
           </button>
         </form>
       </div>
     </div>
+            </>
   );
 };
 

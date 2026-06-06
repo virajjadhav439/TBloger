@@ -2,20 +2,22 @@ const Blog = require('../models/Blog');
 
 const createBlog = async (req,res)=>{
     try {
-        const {title,content} = req.body
+        const {title,category,content,image} = req.body
     //New Blog
     const blog = await Blog.create({
-        title,content,author:req.user.userId
+        title,category,content,image,author:req.user.userId,
     })
     //Blog Created Succuflyy
     return res.status(201).json({
-        message:"Blog Created Successfully",
-        blog:{
-            _id:blog.id,
-            title:blog.title,
-            author:blog.author,
-        }
-    })
+    message:"Blog Created Successfully",
+    blog:{
+        _id:blog.id,
+        title:blog.title,
+        category:blog.category,
+        image:blog.image,
+        author:blog.author,
+    }
+})
     
     } catch (error) {
         // Blog Creation Failed
@@ -90,9 +92,15 @@ const deleteBlogs = async (req,res)=>{
 const updateBlog = async (req,res)=>{
     try {
 
-        const { title, content } = req.body
+        const { title, content,category,image } = req.body
 
         const blog = await Blog.findById(req.params.id)
+
+        if (!blog) {
+    return res.status(404).json({
+        message:"Blog Not Found"
+    })
+}
 
         if(blog.author.toString() !== req.user.userId){
             return res.status(403).json({
@@ -109,7 +117,9 @@ const updateBlog = async (req,res)=>{
         const updatedBlog = await Blog.findByIdAndUpdate(
             req.params.id,
             { title,
-            content 
+            content,
+            category,
+            image,
         },
             { returnDocument:'after' }
         )

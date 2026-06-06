@@ -3,6 +3,7 @@ import BlogCard from "../components/BlogCard";
 import API from "../api/api";
 import { Link, useNavigate } from "react-router-dom";
 import '../css/Profile.css'
+import Navbar from "../components/Navbar";
 
 const Profile = () => {
   //Create State
@@ -76,6 +77,7 @@ const handleLogout = async ()=>{
 
   return (
     <>
+    <Navbar/>
       <div className="profile-page">
         <div className="profile-container">
           <div className="profile-header">

@@ -296,3 +296,79 @@
         justify-content:center;
     }
 }   
+
+/* DARK THEME PROFILE */
+
+body.dark .profile-container{
+
+    background:rgba(30,30,30,0.75);
+
+    border:1px solid rgba(255,255,255,0.08);
+
+    box-shadow:0 8px 32px rgba(0,0,0,0.4);
+}
+
+body.dark .profile-heading{
+
+    color:white;
+}
+
+body.dark .profile-user-name{
+
+    color:white;
+}
+
+body.dark .profile-user-email{
+
+    color:#bdbdbd;
+}
+
+body.dark .profile-blog-count{
+
+    color:#e0e0e0;
+}
+
+body.dark .profile-my-blogs h2{
+
+    color:white;
+}
+
+body.dark .profile-my-blogs > div{
+
+    background:rgba(50,50,50,0.7);
+
+    border:1px solid rgba(255,255,255,0.05);
+
+    box-shadow:0 4px 12px rgba(0,0,0,0.25);
+}
+
+body.dark .profile-my-blogs h3{
+
+    color:white;
+}
+
+/* Keep Edit Button Same */
+
+/* Delete Button */
+
+body.dark .profile-delete-button{
+
+    background:#dc2626;
+}
+
+body.dark .profile-delete-button:hover{
+
+    box-shadow:0 0 15px rgba(220,38,38,0.8);
+}
+
+/* Logout Button */
+
+body.dark .profile-logout-button{
+
+    background:tomato;
+}
+
+body.dark .profile-logout-button:hover{
+
+    box-shadow:0 0 18px rgba(255,99,71,0.9);
+}

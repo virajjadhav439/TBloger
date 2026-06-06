@@ -1,0 +1,12 @@
+.BlogPage-heading{
+    margin: 1rem;
+    margin-left: 10rem;
+}
+@media (max-width:768px) {
+    .BlogPage-heading{
+        margin: 3rem;
+        margin-left: 10rem;
+        display: flex;
+        justify-content: left;
+    }
+}

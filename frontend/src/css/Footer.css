@@ -9,9 +9,9 @@
 
     text-align:center;
 
-    background:rgba(255,255,255,0.5);
-
-    backdrop-filter:blur(20px);
+    background:rgba(255, 255, 255, 0.0);
+    
+    backdrop-filter:blur(75px);
 
     border-top:1px solid rgba(255,255,255,0.3);
 
@@ -70,4 +70,33 @@
     color:#666;
 
     font-size:0.9rem;
+}
+/* DARK THEME FOOTER */
+
+body.dark .footer-section{
+    background:#1a1a1a;
+}
+
+body.dark .footer{
+    border-top:1px solid #333;
+}
+
+body.dark .footer-logo{
+    color:white;
+}
+
+body.dark .footer-description{
+    color:#bdbdbd;
+}
+
+body.dark .footer-links a{
+    color:white;
+}
+
+body.dark .footer-links a:hover{
+    color:#38bdf8;
+}
+
+body.dark .footer-copyright{
+    color:#9e9e9e;
 }

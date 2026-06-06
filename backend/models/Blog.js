@@ -5,6 +5,10 @@ const blogSchema = new mongoose.Schema({
         type:String,
         required:true,
     },
+    category:{
+        type:String,
+        required:true,
+    },
     content:{
         type:String,
         required:true,
@@ -13,7 +17,12 @@ const blogSchema = new mongoose.Schema({
         type:mongoose.Schema.Types.ObjectId,
         ref:'User',
         required:true,
+    },
+    image:{
+        type:String,
+        default:'',
     }
+
 },{
     timestamps:true,
 })

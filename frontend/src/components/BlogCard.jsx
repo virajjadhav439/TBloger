@@ -7,11 +7,11 @@ function BlogCard({blog}) {
     <div className="blog-card">
 
       <div className="blog-image">
-        <img src={AiImage} alt="IMAGE" />
+        <img src={blog.image} alt={blog.title} />
         </div>
 
       <span className="blog-category">
-        Technology
+        {blog.category}
       </span>
 
       <h2 className="blog-title">

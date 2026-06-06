@@ -1,0 +1,43 @@
+/* ThemeContext.css */
+
+body.light{
+
+    margin:0;
+
+    background:white;
+
+    color:black;
+
+    min-height:100vh;
+
+    font-family:"Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+body.dark{
+
+    margin:0;
+
+    background:#121212;
+
+    color:white;
+
+    min-height:100vh;
+
+    font-family:"Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+body.glass{
+
+    margin:0;
+
+    background:
+    radial-gradient(circle at top left,#65d8ff,transparent 20%),
+    radial-gradient(circle at bottom right,#8ef0b4,transparent 25%),
+    white;
+
+    color:black;
+
+    min-height:100vh;
+
+    font-family:"Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}

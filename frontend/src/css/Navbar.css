@@ -78,3 +78,58 @@
 
     width:100%;
 }
+
+/* DARK THEME */
+
+body.dark .logo{
+    color:white;
+}
+
+body.dark .navbar-options a{
+    color:white;
+}
+
+body.dark .navbar-options a:hover{
+    color:#38bdf8;
+}
+
+body.dark select{
+    background:#1e1e1e;
+    color:white;
+    border:1px solid #333;
+}
+
+body.light .logo{
+    color:black;
+}
+
+body.light .navbar-options a{
+    color:black;
+}
+
+body.glass .logo{
+    color:black;
+}
+
+body.glass .navbar-options a{
+    color:black;
+}
+
+.theme-selector{
+
+    padding:8px 12px;
+
+    border-radius:10px;
+
+    border:none;
+
+    outline:none;
+
+    cursor:pointer;
+
+    font-size:1rem;
+
+    background:rgba(227, 235, 232, 0.6);
+
+    backdrop-filter:blur(10px);
+}
