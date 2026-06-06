@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom'
 import '../css/BlogCard.css'
-import AiImage from './ai.png'
 function BlogCard({blog}) {
   return (
 
